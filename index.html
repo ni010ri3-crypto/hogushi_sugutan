@@ -1029,7 +1029,6 @@ let lines=[];
 lines.push('ほぐしすぐたん');
 lines.push('');
 lines.push(`ご希望メニュー：${v.menu} ${v.duration}分（${fmt(v.price)}）`);
-lines.push(`施術者：鈴田泰啓`);
 if(v.date1) lines.push(`希望日：${formatDate(v.date1)} ${v.time1||''}`);
 else if(v.time1) lines.push(`時間帯：${v.time1}`);
 if(v.ward) lines.push(`訪問エリア：${v.ward}（${v.place}）`);
