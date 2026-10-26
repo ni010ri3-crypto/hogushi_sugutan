@@ -792,7 +792,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 </div>
 <div class="flow">
 <div class="flow-step"><div class="num">1</div><h4>メニューを選んで予約フォームへ</h4><p>メニュー・料金でご希望の時間と料金を押して選び、「この内容で予約に進む」から予約フォームへ進みます。公式LINEからもお申し込みいただけます。</p></div>
-<div class="flow-step"><div class="num">2</div><h4>予約フォームに入力</h4><p>予約フォームで希望日時・メニュー・時間・エリア・お名前などを入力します。このページからそのまま送信できます。</p></div>
+<div class="flow-step"><div class="num">2</div><h4>予約フォームに入力</h4><p>予約フォームで希望日時・メニュー・時間・エリアなどを入力します。このページからそのまま送信できます。</p></div>
 <div class="flow-step"><div class="num">3</div><h4>送信して予約リクエスト</h4><p>「予約を送信する」を押して送信してください。内容を確認のうえ、こちらからご連絡します。公式LINEで直接メッセージを送っていただいても大丈夫です。</p></div>
 <div class="flow-step"><div class="num">4</div><h4>当日・訪問と施術</h4><p>施術者が渋谷から出発し、ご指定の場所へ伺います。施術前に気になる部位や強さを確認してから施術します。</p></div>
 </div>
@@ -855,10 +855,6 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <div class="form-sel-body"><b id="formSelMenu">マッサージ</b><span id="formSelDetail">90分 ・ ¥11,000（税込・交通費込み）</span></div>
 </div>
 <div class="form-grid">
-<div class="field">
-<label for="name">お名前 <span>*</span></label>
-<input id="name" type="text" placeholder="例）鈴田 花子" autocomplete="name" required>
-</div>
 <div class="field full">
 <label>ご希望メニュー <span>*</span></label>
 <div class="radio-group" id="menuGroup">
@@ -999,7 +995,6 @@ const dur=document.querySelector('input[name="duration"]:checked');
 const duration=dur?dur.value:'90';
 const price=(priceMap[menu]&&priceMap[menu][duration])||11000;
 return {
-name:document.getElementById('name').value.trim(),
 menu, duration, price,
 date1:document.getElementById('date1').value,
 time1:document.getElementById('time1').value,
@@ -1031,7 +1026,6 @@ const v=getVals();
 let lines=[];
 lines.push('ほぐしすぐたん');
 lines.push('');
-if(v.name) lines.push(`お名前：${v.name}`);
 lines.push(`ご希望メニュー：${v.menu} ${v.duration}分（${fmt(v.price)}）`);
 lines.push(`施術者：鈴田泰啓`);
 if(v.date1) lines.push(`希望日：${formatDate(v.date1)} ${v.time1||''}`);
@@ -1052,11 +1046,11 @@ document.getElementById('makeTextBtn').addEventListener('click',()=>{
 const v=getVals();
 const out=document.getElementById('output');
 const hint=document.getElementById('copyHint');
-if(!v.name ||!v.ward ||!v.date1){
-out.textContent='入力を確認してください：お名前、希望日、訪問先の区は必須です。未入力の項目がある場合は、文章に含まれませんが、できればご記入ください。\n\n--- 作成された予約希望文 ---\n\n'+buildText();
+if(!v.ward ||!v.date1){
+out.textContent='入力を確認してください：希望日、訪問先の区は必須です。未入力の項目がある場合は、文章に含まれませんが、できればご記入ください。\n\n--- 作成された予約希望文 ---\n\n'+buildText();
 out.classList.add('show');
 lastText=buildText();
-hint.textContent='必須項目（お名前・希望日・区）がまだの場合は追記してからもう一度作成してください。';
+hint.textContent='必須項目（希望日・区）がまだの場合は追記してからもう一度作成してください。';
 return;
 }
 lastText=buildText();
