@@ -106,6 +106,18 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 .cta-pill-lg .cta-label{color:#24302A}
 }
 
+/* net booking pill — filled green so online booking reads first */
+.cta-pill-net{background:#2F6B58;border-color:#2F6B58;color:#FFF;box-shadow:0 10px 28px rgba(47,107,88,.32),0 2px 6px rgba(24,33,29,.08)}
+.cta-pill-net:hover{box-shadow:0 14px 32px rgba(47,107,88,.4),0 2px 6px rgba(24,33,29,.08)}
+.cta-pill-net .cta-icon,.cta-pill-net .cta-arrow{color:#FFF}
+.cta-pill-net .cta-label{color:#FFF}
+.cta-pill-net .cta-label small{display:block;font-size:12.5px;font-weight:700;letter-spacing:.03em;opacity:.88;margin-top:2px}
+@media(prefers-color-scheme:dark){
+.cta-pill-net{background:#A9E7D6;border-color:#A9E7D6}
+.cta-pill-net .cta-label{color:#1C312A}
+.cta-pill-net .cta-icon,.cta-pill-net .cta-arrow{color:#1C312A}
+}
+
 /* header */
 .header{position:sticky;top:0;z-index:50;background:var(--bg);background:color-mix(in srgb, var(--bg) 92%, transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .header-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -454,6 +466,11 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 
 <!-- CTA PILLS : 無料カウンセリング予約 / ご相談・お問い合わせ -->
 <section class="cta-pills" aria-label="予約・お問い合わせ">
+<a href="#booking" class="cta-pill-lg cta-pill-net">
+<span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 19h34"/><path d="M16 6v8"/><path d="M32 6v8"/><path d="M16.5 30.5l4.5 4.5 8-9"/></svg></span>
+<span class="cta-label">ネットで予約する<small>24時間受付 ・ このページのフォームから送信</small></span>
+<span class="cta-arrow" aria-hidden="true">›</span>
+</a>
 <a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="cta-pill-lg">
 <span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="13" r="6"/><path d="M10 40c1.2-7 6.8-10.5 14-10.5S36.8 33 38 40"/><path d="M24 29.5V36"/><path d="M20.5 33.5 24 36l3.5-2.5"/><circle cx="33.5" cy="36.5" r="3.2"/><path d="M31 34.2 29 29"/></svg></span>
 <span class="cta-label">無料カウンセリング予約</span>
@@ -464,7 +481,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <span class="cta-label">ご相談・お問い合わせ</span>
 <span class="cta-arrow" aria-hidden="true">›</span>
 </a>
-<p class="cta-pills-note">どちらも公式LINEで受け付けています。まずはお気軽にご相談ください。</p>
+<p class="cta-pills-note">「ネットで予約する」はこのページのフォームから24時間いつでも予約リクエストを送れます。無料カウンセリング・ご相談は公式LINEでも受け付けています。</p>
 </section>
 
 <header class="header">
@@ -622,6 +639,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <div class="label">Menu & Price</div>
 <h2>メニュー・料金</h2>
 <p>2つのメニューをご用意しています。料金はメニューごとに異なります。その日の疲れやお好みに合わせてお選びください。表示料金は交通費込みです。別途交通費はかかりません。</p>
+<p style="margin-top:10px;background:var(--green-light);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:13.5px;font-weight:700;color:var(--ink)">メニューの料金を押すと、そのメニュー・時間・料金が選ばれて、そのまま予約に進めます。</p>
 </div>
 <a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" style="font-weight:900;font-size:13px;padding:11px 16px;border-radius:999px;background:#06C755;color:#FFF">この料金で今すぐLINE予約する →</a>
 </div>
@@ -765,13 +783,13 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <div>
 <div class="label">How it works</div>
 <h2>ご利用の流れ</h2>
-<p>ご予約は公式LINEからお願いいたします。流れはシンプルです。</p>
+<p>ご予約はこのページのネット予約フォームからが便利です。公式LINEからもお申し込みいただけます。流れはシンプルです。</p>
 </div>
 </div>
 <div class="flow">
-<div class="flow-step"><div class="num">1</div><h4>公式LINEを開く</h4><p>「今すぐLINEで予約する」ボタンから公式LINE（ほぐしすぐたん）を開いてください。</p></div>
-<div class="flow-step"><div class="num">2</div><h4>予約希望文を作る（任意）</h4><p>下の予約希望欄で希望日時・メニュー・時間・エリアなどを記入すると、LINEに貼り付ける文が作れます。</p></div>
-<div class="flow-step"><div class="num">3</div><h4>LINEで送信して予約</h4><p>作った文をコピーして公式LINEのトークに貼り付けて送信してください。直接メッセージを送っていただいても大丈夫です。</p></div>
+<div class="flow-step"><div class="num">1</div><h4>メニューを選んで予約フォームへ</h4><p>メニュー・料金でご希望の時間と料金を押して選び、「この内容で予約に進む」から予約フォームへ進みます。公式LINEからもお申し込みいただけます。</p></div>
+<div class="flow-step"><div class="num">2</div><h4>予約フォームに入力</h4><p>予約フォームで希望日時・メニュー・時間・エリア・お名前などを入力します。このページからそのまま送信できます。</p></div>
+<div class="flow-step"><div class="num">3</div><h4>送信して予約リクエスト</h4><p>「予約を送信する」を押して送信してください。内容を確認のうえ、こちらからご連絡します。公式LINEで直接メッセージを送っていただいても大丈夫です。</p></div>
 <div class="flow-step"><div class="num">4</div><h4>当日・訪問と施術</h4><p>施術者が渋谷から出発し、ご指定の場所へ伺います。施術前に気になる部位や強さを確認してから施術します。</p></div>
 </div>
 <div style="margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--ink2);line-height:1.75;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="font-size:18px" aria-hidden="true">💴</span><p style="margin:0"><strong style="color:var(--ink)">お支払い方法：</strong>お支払い方法は現金またはPayPayでお願いいたします。</p></div>
@@ -783,9 +801,9 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <section class="section" id="booking" style="padding-bottom:12px">
 <div class="booking-wrap">
 <div class="booking-left">
-<div class="label" style="color:#2F6B58">Reservation — Official LINE</div>
-<h2>ご予約は公式LINEから</h2>
-<p>ご予約は公式LINEからお願いいたします。下の「今すぐLINEで予約する」ボタンから公式LINEを開いてご連絡ください。右の予約希望欄で作った文をLINEに貼り付けると、希望日時やメニューをまとめて伝えられます。施術者は渋谷から出発します。</p>
+<div class="label" style="color:#2F6B58">Reservation — ネット予約</div>
+<h2>ご予約はネットからが便利です</h2>
+<p>このページの予約フォームから、24時間いつでも予約リクエストを送れます。メニュー・日時・訪問先を入力して送信すると、内容を確認のうえこちらからご連絡します。公式LINEからのご予約も可能です。施術者は渋谷から出発します。</p>
 <a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin:4px 0 18px;width:100%;text-align:center">今すぐLINEで予約する</a>
 
 <div class="summary-box">
@@ -799,7 +817,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <div class="row"><span>対応エリア</span><b>東京23区</b></div>
 <div class="row"><span>出発地</span><b>渋谷</b></div>
 <div class="row"><span>施術者</span><b>鈴田 泰啓</b></div>
-<div class="row"><span>予約の届け先</span><b>公式LINE</b></div>
+<div class="row"><span>予約の届け先</span><b>予約フォーム（ネット予約）</b></div>
 </div>
 
 <div class="line-card">
@@ -823,9 +841,9 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 
 <form class="booking-form" id="bookingForm" onsubmit="return false;">
 <div style="margin-bottom:16px">
-<div style="font-size:11px;letter-spacing:.18em;font-weight:900;color:#0A8A3C">OFFICIAL LINE</div>
-<h3 style="margin:4px 0 6px;font-size:19px;line-height:1.35">ご予約フォーム</h3>
-<p style="margin:0;font-size:13.5px;line-height:1.7;color:var(--ink2)">必要事項を入力して「予約を送信する」を押すと、そのままご予約いただけます。公式LINEに貼り付ける予約希望文を作ることもできます。</p>
+<div style="font-size:11px;letter-spacing:.18em;font-weight:900;color:#0A8A3C">ONLINE BOOKING — ネット予約</div>
+<h3 style="margin:4px 0 6px;font-size:19px;line-height:1.35">ご予約フォーム（ネット予約）</h3>
+<p style="margin:0;font-size:13.5px;line-height:1.7;color:var(--ink2)">必要事項を入力して「予約を送信する」を押すと、予約リクエストがそのまま送信されます（24時間受付）。送信後、内容を確認のうえこちらからご連絡します。公式LINEに貼り付ける予約希望文を作ることもできます。</p>
 </div>
 <div class="form-sel-box">
 <div class="form-sel-head"><span>選択中のメニュー</span><a href="#menu" class="form-sel-change">変更する</a></div>
