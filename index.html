@@ -59,7 +59,7 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 .hero-copy h1{font-weight:900}
 .section-head h2,.booking-left h2{font-weight:900}
 .menu-body h3,.area-card h3{font-weight:700}
-.fv-name,.cta-name,.btn-line,.btn-line-main,.btn-submit,.badge,.tag,.ward,.qual{font-feature-settings:"palt" 1,"kern" 1}
+.fv-name,.cta-name,.btn-line,.btn-line-main,.badge,.tag,.ward,.qual{font-feature-settings:"palt" 1,"kern" 1}
 .price-row .yen,.hero-price div b{font-feature-settings:"tnum" 1;letter-spacing:.02em}
 .reviews-score .big,.summary-box .total,#sumPrice,.dur-price{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums}
 
@@ -323,17 +323,9 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 .duration-group{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .duration-group.radio-pill{min-width:auto}
 .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.btn-submit{background:#2F6B58;color:#FFF;border:none;padding:14px 18px;border-radius:999px;font-weight:900;font-size:14px;cursor:pointer;flex:1}
-@media(prefers-color-scheme:dark){.btn-submit{background:#A9E7D6;color:#1C312A}}
 .btn-copy{background:transparent;border:1px solid var(--line);padding:13px 16px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer;color:var(--ink)}
 .output{margin-top:14px;background:var(--bg2);border:1px dashed var(--line);border-radius:14px;padding:14px;font-size:13px;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;display:none}
 .output.show{display:block}
-.submit-result{display:none;margin-top:14px;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.75;font-weight:700;overflow-wrap:anywhere;max-width:100%}
-.submit-result.show{display:block}
-.submit-result.success{background:#EAF7EE;border:1px solid #06C755;color:#14532D}
-.submit-result.error{background:#FDF1E7;border:1px solid #E8A87C;color:#7A3B12}
-.submit-result a{color:#0A8A3C;font-weight:900;text-decoration:underline}
-.btn-submit:disabled{opacity:.55;cursor:wait}
 .hint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
 .line-note-flex{display:flex;gap:14px;align-items:flex-start}
 .booking-photo{margin-top:16px;border-radius:16px;overflow:hidden}
@@ -379,7 +371,6 @@ img,svg{max-width:100%}
 .section-head>a{max-width:100%}
 .radio-group,.duration-group,.form-actions{min-width:0}
 .radio-pill{min-width:0}
-.btn-submit{min-width:0}
 .btn-line,.btn-line-main{max-width:100%}
 .fv-badge{max-width:100%}
 .fv-badge .fv-sub{overflow-wrap:anywhere}
@@ -432,13 +423,9 @@ img,svg{max-width:100%}
 .form-sel-body b{font-size:19px;line-height:1.3}
 .form-sel-body span{font-size:14px;font-weight:700;color:#3E574E}
 
-/* cancellation policy agreement — gates the submit button */
+/* cancellation policy note */
 .policy-box{margin-top:16px;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#FFF}
-.policy-text{margin:0 0 10px;font-size:13px;line-height:1.75;color:#4A5751}
-.policy-agree{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;font-weight:800;cursor:pointer;line-height:1.5;color:#18211D}
-.policy-agree input{width:20px;height:20px;flex-shrink:0;margin:2px 0 0;accent-color:#2F6B58;cursor:pointer}
-.policy-agree span{color:#B4532A}
-.btn-submit:disabled{cursor:not-allowed}
+.policy-text{margin:0;font-size:13px;line-height:1.75;color:#4A5751}
 
 /* fixed bottom LINE booking bar — always visible while scrolling.
    Sits above the page content (z-index 90, header is 50); the body gets
@@ -933,15 +920,11 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 </div>
 <div class="policy-box">
 <p class="policy-text">キャンセルポリシー：キャンセルはご予約時間の1時間前まで受付可能です。表示料金は交通費込みです（別途交通費はかかりません）。</p>
-<label class="policy-agree" for="policyAgree"><input type="checkbox" id="policyAgree">キャンセルポリシーに同意します <span>*</span></label>
 </div>
 <div class="form-actions">
-<button type="button" class="btn-submit" id="sendBtn">予約を送信する</button>
 <button type="button" class="btn-copy" id="makeTextBtn">予約希望文を作成する（LINE用）</button>
 <button type="button" class="btn-copy" id="copyBtn">文をコピー</button>
 </div>
-<p class="hint" style="font-weight:700;color:#0A8A3C">このあとLINEが開きます。内容を確認して、LINEの送信ボタンを押してください。</p>
-<div class="submit-result" id="submitResult" role="status" aria-live="polite"></div>
 <div class="output" id="output"></div>
 <p class="hint" id="copyHint">「予約を送信する」を押すと、入力内容がそのまま送信されます。「予約希望文を作成する」を押すと、公式LINEに貼り付ける文章も作れます。コピーしたら、上の「今すぐLINEで予約する」ボタンから公式LINEを開いて貼り付けてお送りください。</p>
 <div class="line-note">
@@ -1098,75 +1081,6 @@ document.getElementById('copyHint').textContent='コピーできませんでし�
 }
 });
 
-/* 台帳（Googleスプレッドシート）への送信 — Google Apps Script WebアプリへPOST */
-const GAS_URL='https://script.google.com/macros/s/AKfycby5B6eCewGdyQHWlwfzIinVIxUUJzVwUNnNCFEYrVhfrm_EGnErnhkqmFRO5Fnb6hRS/exec';
-const sendBtn=document.getElementById('sendBtn');
-const submitResult=document.getElementById('submitResult');
-sendBtn.addEventListener('click', async ()=>{
-/* キャンセルポリシー同意の明示的な確認 — 未チェックなら送信もLINEオープンも行わない */
-if(!document.getElementById('policyAgree').checked){
-submitResult.className='submit-result';
-submitResult.innerHTML='';
-submitResult.classList.add('show','error');
-submitResult.textContent='キャンセルポリシーへの同意が必要です。「キャンセルポリシーに同意します」にチェックしてから送信してください。';
-submitResult.scrollIntoView({behavior:'smooth',block:'nearest'});
-document.getElementById('policyAgree').focus();
-return;
-}
-const v=getVals();
-submitResult.className='submit-result';
-submitResult.innerHTML='';
-if(!v.name){
-submitResult.classList.add('show','error');
-submitResult.textContent='お名前は必須です。入力してから送信してください。';
-submitResult.scrollIntoView({behavior:'smooth',block:'nearest'});
-document.getElementById('name').focus();
-return;
-}
-if(!v.date1){
-submitResult.classList.add('show','error');
-submitResult.textContent='希望日は必須です。選択してから送信してください。';
-submitResult.scrollIntoView({behavior:'smooth',block:'nearest'});
-document.getElementById('date1').focus();
-return;
-}
-if(!v.ward){
-submitResult.classList.add('show','error');
-submitResult.textContent='訪問先の区は必須です。選択してから送信してください。';
-submitResult.scrollIntoView({behavior:'smooth',block:'nearest'});
-document.getElementById('ward').focus();
-return;
-}
-const dateParts=[];
-if(v.date1) dateParts.push('第1希望：'+formatDate(v.date1));
-const timeParts=[];
-if(v.time1) timeParts.push('第1希望：'+v.time1);
-const params=new URLSearchParams();
-params.set('name',v.name);
-params.set('date',dateParts.join(' ／ '));
-params.set('time',timeParts.join(' ／ '));
-params.set('menu',v.menu);
-params.set('duration',v.duration+'分');
-params.set('price',fmt(v.price));
-params.set('area',v.ward);
-params.set('place',v.place+(v.address?'（'+v.address+'）':''));
-params.set('note',v.notes);
-sendBtn.disabled=true;
-sendBtn.textContent='送信中…';
-try{
-await fetch(GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:params.toString()});
-const lineUrl='https://line.me/R/oaMessage/@523uesih/?'+encodeURIComponent(buildText());
-submitResult.classList.add('show','success');
-submitResult.innerHTML='送信しました。内容を確認のうえ、こちらからご連絡いたします。<br>このあとLINEが開きます。内容を確認して、LINEの送信ボタンを押してください。<a class="btn-line-main" style="margin-top:12px" href="'+lineUrl+'" target="_blank" rel="noopener">LINEで送信する</a>';
-window.open(lineUrl,'_blank');
-}catch(e){
-submitResult.classList.add('show','error');
-submitResult.innerHTML='送信できませんでした。お手数ですが、公式LINEからご連絡ください。<br><a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener">公式LINEはこちら（https://lin.ee/QRAL5dJ）</a>';
-}
-sendBtn.disabled=false;
-sendBtn.textContent='予約を送信する';
-submitResult.scrollIntoView({behavior:'smooth',block:'nearest'});
-});
 </script>
 <script>
 /* メニュー・料金セクションの選択と予約フォームの連動 */
@@ -1264,13 +1178,6 @@ updateFloat();
 }
 window.addEventListener('resize',layoutFloat);
 reflect();
-
-/* キャンセルポリシー同意チェック — チェックが入るまで送信ボタンを押せない */
-var agree=document.getElementById('policyAgree');
-var send=document.getElementById('sendBtn');
-function syncSend(){send.disabled=!agree.checked;}
-agree.addEventListener('change',syncSend);
-syncSend();
 })();
 </script>
 </div>
