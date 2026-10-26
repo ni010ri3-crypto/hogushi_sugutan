@@ -59,7 +59,7 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 .hero-copy h1{font-weight:900}
 .section-head h2,.booking-left h2{font-weight:900}
 .menu-body h3,.area-card h3{font-weight:700}
-.fv-name,.cta-label,.btn-line,.btn-line-main,.btn-submit,.badge,.tag,.ward,.qual{font-feature-settings:"palt" 1,"kern" 1}
+.fv-name,.cta-name,.btn-line,.btn-line-main,.btn-submit,.badge,.tag,.ward,.qual{font-feature-settings:"palt" 1,"kern" 1}
 .price-row .yen,.hero-price div b{font-feature-settings:"tnum" 1;letter-spacing:.02em}
 .reviews-score .big,.summary-box .total,#sumPrice,.dur-price{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums}
 
@@ -84,38 +84,32 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 .fv img{object-position:50% 10%}
 }
 
-/* CTA pills — like reference: large white pill buttons stacked */
-.cta-pills{max-width:760px;margin:0 auto;padding:28px 20px 6px;display:flex;flex-direction:column;gap:16px}
-.cta-pill-lg{display:flex;align-items:center;gap:16px;background:#FFFFFF;color:#3A4540;border:1px solid #EDE9DE;border-radius:999px;padding:20px 26px 20px 30px;box-shadow:0 10px 28px rgba(24,33,29,.14),0 2px 6px rgba(24,33,29,.08);font-weight:700;transition:transform .15s ease,box-shadow .15s ease}
-.cta-pill-lg:hover{transform:translateY(-1px);box-shadow:0 14px 32px rgba(24,33,29,.18),0 2px 6px rgba(24,33,29,.08)}
-.cta-pill-lg .cta-icon{width:46px;height:46px;flex-shrink:0;display:grid;place-items:center;color:#4A5751}
-.cta-pill-lg .cta-icon svg{width:42px;height:42px;display:block}
-.cta-pill-lg .cta-label{flex:1;text-align:center;font-size:22px;letter-spacing:.04em;line-height:1.3;color:#3A4540}
-.cta-pill-lg .cta-arrow{flex-shrink:0;font-size:22px;font-weight:900;color:#4A5751;line-height:1}
-.cta-pills-note{margin:2px 0 0;text-align:center;font-size:12.5px;color:var(--muted);line-height:1.6}
+/* CTA circles — three round buttons in a row: icon centered in the
+   circle, the button name in small text below it */
+.cta-pills{max-width:760px;margin:0 auto;padding:28px 20px 6px}
+.cta-circles{display:flex;justify-content:space-between;gap:8px}
+.cta-circle{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:9px;-webkit-tap-highlight-color:transparent}
+.cta-circle .cta-disc{width:88px;height:88px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:#FFFFFF;color:#4A5751;border:1px solid #EDE9DE;box-shadow:0 10px 24px rgba(24,33,29,.13),0 2px 6px rgba(24,33,29,.08);transition:transform .15s ease,box-shadow .15s ease}
+.cta-circle:hover .cta-disc{transform:translateY(-1px);box-shadow:0 14px 28px rgba(24,33,29,.17),0 2px 6px rgba(24,33,29,.08)}
+.cta-circle .cta-disc svg{width:42px;height:42px;display:block}
+.cta-circle .cta-name{font-size:13px;font-weight:700;letter-spacing:.03em;line-height:1.45;text-align:center;color:#3A4540}
+.cta-pills-note{margin:14px 0 0;text-align:center;font-size:12.5px;color:var(--muted);line-height:1.6}
 @media(max-width:560px){
-.cta-pills{padding:22px 16px 2px;gap:13px}
-.cta-pill-lg{padding:16px 18px 16px 20px;gap:10px}
-.cta-pill-lg .cta-icon{width:36px;height:36px}
-.cta-pill-lg .cta-icon svg{width:34px;height:34px}
-.cta-pill-lg .cta-label{font-size:17.5px}
-.cta-pill-lg .cta-arrow{font-size:18px}
+.cta-pills{padding:22px 16px 2px}
+.cta-circle .cta-disc{width:76px;height:76px}
+.cta-circle .cta-disc svg{width:36px;height:36px}
+.cta-circle .cta-name{font-size:12px}
 }
 @media(prefers-color-scheme:dark){
-.cta-pill-lg{background:#F7F4EC;border-color:#F7F4EC}
-.cta-pill-lg .cta-label{color:#24302A}
+.cta-circle .cta-disc{background:#F7F4EC;border-color:#F7F4EC;color:#24302A}
+.cta-circle .cta-name{color:var(--ink)}
 }
 
-/* net booking pill — filled green so online booking reads first */
-.cta-pill-net{background:#2F6B58;border-color:#2F6B58;color:#FFF;box-shadow:0 10px 28px rgba(47,107,88,.32),0 2px 6px rgba(24,33,29,.08)}
-.cta-pill-net:hover{box-shadow:0 14px 32px rgba(47,107,88,.4),0 2px 6px rgba(24,33,29,.08)}
-.cta-pill-net .cta-icon,.cta-pill-net .cta-arrow{color:#FFF}
-.cta-pill-net .cta-label{color:#FFF}
-.cta-pill-net .cta-label small{display:block;font-size:12.5px;font-weight:700;letter-spacing:.03em;opacity:.88;margin-top:2px}
+/* net booking circle — filled green so online booking reads first */
+.cta-circle-net .cta-disc{background:#2F6B58;border-color:#2F6B58;color:#FFF;box-shadow:0 10px 24px rgba(47,107,88,.32),0 2px 6px rgba(24,33,29,.08)}
+.cta-circle-net:hover .cta-disc{box-shadow:0 14px 28px rgba(47,107,88,.4),0 2px 6px rgba(24,33,29,.08)}
 @media(prefers-color-scheme:dark){
-.cta-pill-net{background:#A9E7D6;border-color:#A9E7D6}
-.cta-pill-net .cta-label{color:#1C312A}
-.cta-pill-net .cta-icon,.cta-pill-net .cta-arrow{color:#1C312A}
+.cta-circle-net .cta-disc{background:#A9E7D6;border-color:#A9E7D6;color:#1C312A}
 }
 
 /* header */
@@ -145,8 +139,12 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 .hero-copy h1{font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-size:52px;line-height:1.05;margin:16px 0 6px;letter-spacing:.02em;font-weight:800}
 .hero-copy h1 small{display:block;font-size:18px;letter-spacing:.28em;font-weight:600;margin-bottom:10px;opacity:.9}
 .hero-copy p.lead{font-size:16.5px;line-height:1.85;color:#335247;margin:10px 0 20px;max-width:520px}
-.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 22px}
-.badge{border:1px solid rgba(47,107,88,.28);background:rgba(255,255,255,.55);color:#234038;padding:7px 12px;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:.02em}
+.hero-badges{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:6px 0 22px;max-width:600px}
+.badge{border:1px solid rgba(47,107,88,.28);background:rgba(255,255,255,.55);color:#234038;padding:8px 10px;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;text-align:center;min-width:0;line-height:1.5}
+@media(max-width:560px){
+.hero-badges{gap:6px}
+.badge{font-size:11px;padding:7px 6px;letter-spacing:0}
+}
 .hero-price{display:flex;gap:18px;flex-wrap:wrap;padding-top:18px;border-top:1px solid rgba(47,107,88,.22);color:#1C312A}
 .hero-price div b{display:block;font-size:22px;line-height:1;font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif}
 .hero-price div span{font-size:11px;letter-spacing:.14em;opacity:.8;font-weight:700}
@@ -479,23 +477,22 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <div class="fv-scroll">SCROLL ↓</div>
 </section>
 
-<!-- CTA PILLS : 無料カウンセリング予約 / ご相談・お問い合わせ -->
+<!-- CTA CIRCLES : ネットで予約する / 無料カウンセリング予約 / ご相談・お問い合わせ -->
 <section class="cta-pills" aria-label="予約・お問い合わせ">
-<a href="#booking" class="cta-pill-lg cta-pill-net">
-<span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 19h34"/><path d="M16 6v8"/><path d="M32 6v8"/><path d="M16.5 30.5l4.5 4.5 8-9"/></svg></span>
-<span class="cta-label">ネットで予約する<small>24時間受付 ・ このページのフォームから送信</small></span>
-<span class="cta-arrow" aria-hidden="true">›</span>
+<div class="cta-circles">
+<a href="#booking" class="cta-circle cta-circle-net">
+<span class="cta-disc" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 19h34"/><path d="M16 6v8"/><path d="M32 6v8"/><path d="M16.5 30.5l4.5 4.5 8-9"/></svg></span>
+<span class="cta-name">ネットで予約する</span>
 </a>
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="cta-pill-lg">
-<span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="13" r="6"/><path d="M10 40c1.2-7 6.8-10.5 14-10.5S36.8 33 38 40"/><path d="M24 29.5V36"/><path d="M20.5 33.5 24 36l3.5-2.5"/><circle cx="33.5" cy="36.5" r="3.2"/><path d="M31 34.2 29 29"/></svg></span>
-<span class="cta-label">無料カウンセリング予約</span>
-<span class="cta-arrow" aria-hidden="true">›</span>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="cta-circle">
+<span class="cta-disc" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="13" r="6"/><path d="M10 40c1.2-7 6.8-10.5 14-10.5S36.8 33 38 40"/><path d="M24 29.5V36"/><path d="M20.5 33.5 24 36l3.5-2.5"/><circle cx="33.5" cy="36.5" r="3.2"/><path d="M31 34.2 29 29"/></svg></span>
+<span class="cta-name">無料カウンセリング予約</span>
 </a>
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="cta-pill-lg">
-<span class="cta-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="9" width="28" height="21" rx="2"/><path d="M24 36h10"/><path d="M29 30v6"/><rect x="5" y="16" width="13" height="22" rx="2"/><path d="M10.5 34h2"/></svg></span>
-<span class="cta-label">ご相談・お問い合わせ</span>
-<span class="cta-arrow" aria-hidden="true">›</span>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="cta-circle">
+<span class="cta-disc" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="15" y="9" width="28" height="21" rx="2"/><path d="M24 36h10"/><path d="M29 30v6"/><rect x="5" y="16" width="13" height="22" rx="2"/><path d="M10.5 34h2"/></svg></span>
+<span class="cta-name">ご相談・お問い合わせ</span>
 </a>
+</div>
 <p class="cta-pills-note">「ネットで予約する」はこのページのフォームから24時間いつでも予約リクエストを送れます。無料カウンセリング・ご相談は公式LINEでも受け付けています。</p>
 </section>
 
@@ -524,7 +521,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <span class="badge">✓ 出発地は渋谷</span>
 <span class="badge">✓ 東京23区対応</span>
 <span class="badge">✓ あん摩マッサージ指圧師</span>
-<span class="badge">✓ 料金は明朗・税込表示</span>
+<span class="badge">✓ 料金は税込表示</span>
 <span class="badge">✓ 交通費込み</span>
 <span class="badge">✓ 受付時間 10:00〜23:00</span>
 </div>
