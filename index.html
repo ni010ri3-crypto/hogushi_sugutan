@@ -391,6 +391,18 @@ img,svg{max-width:100%}
 .summary-box .row b{overflow-wrap:anywhere}
 .booking-left p,.footer p{overflow-wrap:anywhere}
 }
+
+/* fixed bottom LINE booking bar — always visible while scrolling.
+   Sits above the page content (z-index 90, header is 50); the body gets
+   matching bottom padding (bar height + iPhone safe area) so the footer
+   and the end of the booking form are never hidden behind it, and the
+   form's own buttons stay reachable by scrolling. */
+body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.fixed-line-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.94);background:color-mix(in srgb,#FFFFFF 92%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid rgba(6,199,85,.4);box-shadow:0 -6px 24px rgba(24,33,29,.16)}
+@media(prefers-color-scheme:dark){.fixed-line-bar{background:rgba(20,32,26,.94);background:color-mix(in srgb,#14201A 92%,transparent)}}
+.fixed-line-bar a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:760px;margin:0 auto;background:#06C755;color:#FFF!important;font-weight:900;font-size:17px;letter-spacing:.04em;line-height:1.25;padding:15px 16px;border-radius:999px;text-align:center;box-shadow:0 8px 22px rgba(6,199,85,.35);font-feature-settings:"palt" 1,"kern" 1}
+.fixed-line-bar a:hover{background:#05B34C}
+@media(max-width:560px){.fixed-line-bar a{font-size:16px;padding:14px 12px}}
 </style>
 </head>
 <body>
@@ -433,7 +445,7 @@ img,svg{max-width:100%}
 <a href="#area">対応エリア</a>
 <a href="#flow">ご利用の流れ</a>
 </nav>
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="cta-pill" style="background:#06C755;color:#FFF">LINEで予約する →</a>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="cta-pill" style="background:#06C755;color:#FFF">今すぐLINEで予約する →</a>
 </div>
 </header>
 
@@ -456,7 +468,7 @@ img,svg{max-width:100%}
 <div><span>オイルマッサージ 60分 / 90分 / 120分</span><b>¥9,000 / ¥12,000 / ¥15,000</b></div>
 </div>
 <div class="hero-actions">
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-primary" style="background:#06C755;color:#FFF">LINEで予約する</a>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-primary" style="background:#06C755;color:#FFF">今すぐLINEで予約する</a>
 <a href="#booking" class="btn-ghost">予約希望文を作る</a>
 <a href="#menu" class="btn-ghost">メニューを見る</a>
 </div>
@@ -578,7 +590,7 @@ img,svg{max-width:100%}
 <h2>メニュー・料金</h2>
 <p>2つのメニューをご用意しています。料金はメニューごとに異なります。その日の疲れやお好みに合わせてお選びください。表示料金は交通費込みです。別途交通費はかかりません。</p>
 </div>
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" style="font-weight:900;font-size:13px;padding:11px 16px;border-radius:999px;background:#06C755;color:#FFF">この料金でLINE予約する →</a>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" style="font-weight:900;font-size:13px;padding:11px 16px;border-radius:999px;background:#06C755;color:#FFF">この料金で今すぐLINE予約する →</a>
 </div>
 
 <div class="menu-grid">
@@ -720,7 +732,7 @@ img,svg{max-width:100%}
 </div>
 </div>
 <div class="flow">
-<div class="flow-step"><div class="num">1</div><h4>公式LINEを開く</h4><p>「LINEで予約する」ボタンから公式LINE（ほぐしすぐたん）を開いてください。</p></div>
+<div class="flow-step"><div class="num">1</div><h4>公式LINEを開く</h4><p>「今すぐLINEで予約する」ボタンから公式LINE（ほぐしすぐたん）を開いてください。</p></div>
 <div class="flow-step"><div class="num">2</div><h4>予約希望文を作る（任意）</h4><p>下の予約希望欄で希望日時・メニュー・時間・エリアなどを記入すると、LINEに貼り付ける文が作れます。</p></div>
 <div class="flow-step"><div class="num">3</div><h4>LINEで送信して予約</h4><p>作った文をコピーして公式LINEのトークに貼り付けて送信してください。直接メッセージを送っていただいても大丈夫です。</p></div>
 <div class="flow-step"><div class="num">4</div><h4>当日・訪問と施術</h4><p>施術者が渋谷から出発し、ご指定の場所へ伺います。施術前に気になる部位や強さを確認してから施術します。</p></div>
@@ -736,8 +748,8 @@ img,svg{max-width:100%}
 <div class="booking-left">
 <div class="label" style="color:#2F6B58">Reservation — Official LINE</div>
 <h2>ご予約は公式LINEから</h2>
-<p>ご予約は公式LINEからお願いいたします。下の「LINEで予約する」ボタンから公式LINEを開いてご連絡ください。右の予約希望欄で作った文をLINEに貼り付けると、希望日時やメニューをまとめて伝えられます。施術者は渋谷から出発します。</p>
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin:4px 0 18px;width:100%;text-align:center">LINEで予約する</a>
+<p>ご予約は公式LINEからお願いいたします。下の「今すぐLINEで予約する」ボタンから公式LINEを開いてご連絡ください。右の予約希望欄で作った文をLINEに貼り付けると、希望日時やメニューをまとめて伝えられます。施術者は渋谷から出発します。</p>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin:4px 0 18px;width:100%;text-align:center">今すぐLINEで予約する</a>
 
 <div class="summary-box">
 <div class="row"><span>選択中のメニュー</span><b id="sumMenu">マッサージ</b></div>
@@ -759,10 +771,10 @@ img,svg{max-width:100%}
 <p>下のボタンから公式LINEが開きます。予約希望文を作った方は、トークに貼り付けて送信してください。</p>
 <ol>
 <li>右の欄で予約希望文を作成・コピー（任意）</li>
-<li>「LINEで予約する」ボタンから公式LINEを開く</li>
+<li>「今すぐLINEで予約する」ボタンから公式LINEを開く</li>
 <li>文を貼り付けて送信して予約完了</li>
 </ol>
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin-top:12px">LINEで予約する</a>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin-top:12px">今すぐLINEで予約する</a>
 </div>
 </div>
 
@@ -848,7 +860,7 @@ img,svg{max-width:100%}
 </div>
 
 <div style="margin-top:18px">
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line-main">LINEで予約する — 公式LINEを開く</a>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line-main">今すぐLINEで予約する — 公式LINEを開く</a>
 <p style="margin:8px 0 0;font-size:12px;color:var(--muted);line-height:1.6;text-align:center">ご予約の完了は公式LINEでの送信をもってお願いいたします</p>
 </div>
 <div class="form-actions">
@@ -858,12 +870,12 @@ img,svg{max-width:100%}
 </div>
 <div class="submit-result" id="submitResult" role="status" aria-live="polite"></div>
 <div class="output" id="output"></div>
-<p class="hint" id="copyHint">「予約を送信する」を押すと、入力内容がそのまま送信されます。「予約希望文を作成する」を押すと、公式LINEに貼り付ける文章も作れます。コピーしたら、上の「LINEで予約する」ボタンから公式LINEを開いて貼り付けてお送りください。</p>
+<p class="hint" id="copyHint">「予約を送信する」を押すと、入力内容がそのまま送信されます。「予約希望文を作成する」を押すと、公式LINEに貼り付ける文章も作れます。コピーしたら、上の「今すぐLINEで予約する」ボタンから公式LINEを開いて貼り付けてお送りください。</p>
 <div class="line-note">
 <div class="line-note-flex">
 <div>
-<p><b>ご予約は公式LINEからお願いいたします。</b>予約希望文をコピーしたあと、「LINEで予約する」ボタンから公式LINEのトークを開き、文を貼り付けて送信してください。</p>
-<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin-top:10px;padding:11px 18px;font-size:14px">LINEで予約する</a>
+<p><b>ご予約は公式LINEからお願いいたします。</b>予約希望文をコピーしたあと、「今すぐLINEで予約する」ボタンから公式LINEのトークを開き、文を貼り付けて送信してください。</p>
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin-top:10px;padding:11px 18px;font-size:14px">今すぐLINEで予約する</a>
 </div>
 </div>
 </div>
@@ -905,6 +917,11 @@ img,svg{max-width:100%}
 </div>
 <p>ほぐし（マッサージ）60分 ¥8,000 ・ 90分 ¥11,000 ・ 120分 ¥14,000<br>オイルマッサージ 60分 ¥9,000 ・ 90分 ¥12,000 ・ 120分 ¥15,000<br>表示料金は交通費込みです ／ キャンセルはご予約時間の1時間前まで受付可能です<br>受付時間は朝10:00〜夜23:00まで（終電の都合により、受付終了が早まる場合があります）<br>渋谷区・港区は深夜のご予約も受付可能です<br><a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" style="color:#0A8A3C;font-weight:900">ご予約は公式LINEから →</a></p>
 </footer>
+
+<!-- FIXED BOTTOM LINE BOOKING BAR -->
+<div class="fixed-line-bar">
+<a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener">今すぐLINEで予約する</a>
+</div>
 
 <script>
 const priceMap={
@@ -985,7 +1002,7 @@ return;
 lastText=buildText();
 out.textContent=lastText;
 out.classList.add('show');
-hint.textContent='予約希望文ができました。「文をコピー」を押したら、「LINEで予約する」ボタンから公式LINEを開いて貼り付けてお送りください。';
+hint.textContent='予約希望文ができました。「文をコピー」を押したら、「今すぐLINEで予約する」ボタンから公式LINEを開いて貼り付けてお送りください。';
 out.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
 document.getElementById('copyBtn').addEventListener('click', async ()=>{
@@ -996,7 +1013,7 @@ document.getElementById('output').classList.add('show');
 }
 try{
 await navigator.clipboard.writeText(lastText);
-document.getElementById('copyHint').textContent='コピーしました。「LINEで予約する」ボタンから公式LINEを開いて、トークに貼り付けてお送りください。';
+document.getElementById('copyHint').textContent='コピーしました。「今すぐLINEで予約する」ボタンから公式LINEを開いて、トークに貼り付けてお送りください。';
 document.getElementById('copyBtn').textContent='コピーしました ✓';
 setTimeout(()=>document.getElementById('copyBtn').textContent='文をコピー',1800);
 }catch(e){
