@@ -874,11 +874,6 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <input id="phone" type="tel" placeholder="例）090-0000-0000" autocomplete="tel" required>
 </div>
 <div class="field full">
-<label for="email">メールアドレス</label>
-<input id="email" type="email" placeholder="例）example@mail.com" autocomplete="email">
-</div>
-
-<div class="field full">
 <label>ご希望メニュー <span>*</span></label>
 <div class="radio-group" id="menuGroup">
 <div class="radio-pill"><input type="radio" name="menu" id="menu1" value="マッサージ" checked><label for="menu1">マッサージ</label></div>
@@ -1023,7 +1018,6 @@ const price=(priceMap[menu]&&priceMap[menu][duration])||11000;
 return {
 name:document.getElementById('name').value.trim(),
 phone:document.getElementById('phone').value.trim(),
-email:document.getElementById('email').value.trim(),
 menu, duration, price,
 date1:document.getElementById('date1').value,
 time1:document.getElementById('time1').value,
@@ -1057,7 +1051,6 @@ lines.push('ほぐしすぐたん');
 lines.push('');
 if(v.name) lines.push(`お名前：${v.name}`);
 if(v.phone) lines.push(`電話番号：${v.phone}`);
-if(v.email) lines.push(`メールアドレス：${v.email}`);
 lines.push(`ご希望メニュー：${v.menu} ${v.duration}分（${fmt(v.price)}）`);
 lines.push(`施術者：鈴田泰啓`);
 if(v.date1) lines.push(`第一希望：${formatDate(v.date1)} ${v.time1||''}`);
@@ -1129,7 +1122,6 @@ if(v.time1) timeParts.push('第1希望：'+v.time1);
 const params=new URLSearchParams();
 params.set('name',v.name);
 params.set('phone',v.phone);
-params.set('email',v.email);
 params.set('date',dateParts.join(' ／ '));
 params.set('time',timeParts.join(' ／ '));
 params.set('menu',v.menu);
