@@ -887,11 +887,11 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 </div>
 
 <div class="field">
-<label for="date1">第一希望日 <span>*</span></label>
+<label for="date1">希望日 <span>*</span></label>
 <input id="date1" type="date">
 </div>
 <div class="field">
-<label for="time1">第一希望 時間帯</label>
+<label for="time1">時間帯</label>
 <select id="time1">
 <option value="">選択してください</option>
 <option>10:00〜12:00</option><option>12:00〜14:00</option><option>14:00〜16:00</option><option>16:00〜18:00</option><option>18:00〜20:00</option><option>20:00〜22:00</option><option>時間は相談したい</option>
@@ -1047,8 +1047,8 @@ lines.push('');
 if(v.name) lines.push(`お名前：${v.name}`);
 lines.push(`ご希望メニュー：${v.menu} ${v.duration}分（${fmt(v.price)}）`);
 lines.push(`施術者：鈴田泰啓`);
-if(v.date1) lines.push(`第一希望：${formatDate(v.date1)} ${v.time1||''}`);
-else if(v.time1) lines.push(`第一希望 時間帯：${v.time1}`);
+if(v.date1) lines.push(`希望日：${formatDate(v.date1)} ${v.time1||''}`);
+else if(v.time1) lines.push(`時間帯：${v.time1}`);
 if(v.ward) lines.push(`訪問エリア：${v.ward}（${v.place}）`);
 else lines.push(`訪問先：${v.place}`);
 if(v.address) lines.push(`住所・目印：${v.address}`);
@@ -1066,10 +1066,10 @@ const v=getVals();
 const out=document.getElementById('output');
 const hint=document.getElementById('copyHint');
 if(!v.name ||!v.ward ||!v.date1){
-out.textContent='入力を確認してください：お名前、第一希望日、訪問先の区は必須です。未入力の項目がある場合は、文章に含まれませんが、できればご記入ください。\n\n--- 作成された予約希望文 ---\n\n'+buildText();
+out.textContent='入力を確認してください：お名前、希望日、訪問先の区は必須です。未入力の項目がある場合は、文章に含まれませんが、できればご記入ください。\n\n--- 作成された予約希望文 ---\n\n'+buildText();
 out.classList.add('show');
 lastText=buildText();
-hint.textContent='必須項目（お名前・第一希望日・区）がまだの場合は追記してからもう一度作成してください。';
+hint.textContent='必須項目（お名前・希望日・区）がまだの場合は追記してからもう一度作成してください。';
 return;
 }
 lastText=buildText();
