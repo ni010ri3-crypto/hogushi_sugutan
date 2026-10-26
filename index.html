@@ -46,20 +46,25 @@
 }
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip;max-width:100%}
-body{margin:0;overflow-x:hidden;overflow-x:clip;max-width:100%;width:100%;background:linear-gradient(165deg,#DFF3D8 0%,#BFEAD9 32%,#A9E7D6 62%,#BEE9E7 100%);background-attachment:fixed;color:var(--ink);font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;line-height:1.8;letter-spacing:.03em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip;max-width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;overscroll-behavior-x:none}
+body{margin:0;overflow-x:hidden;overflow-x:clip;max-width:100%;width:100%;overscroll-behavior-x:none;background:linear-gradient(165deg,#DFF3D8 0%,#BFEAD9 32%,#A9E7D6 62%,#BEE9E7 100%);background-attachment:fixed;color:var(--ink);font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;line-height:1.85;letter-spacing:.04em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"kern" 1}
 @media (prefers-color-scheme: dark){body{background:linear-gradient(165deg,#24473C 0%,#1E3D36 55%,#1B383F 100%);background-attachment:fixed}}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .serif{font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-weight:700}
-/* Morisawa Shin Go / UD Shin Go style: clean gothic, palt headings, even tracking */
-h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
+/* Morisawa Shin Go style on free fonts (Zen Kaku Gothic New / Noto Sans JP):
+   even, upright kana shapes, palt kerning on display text, slightly open
+   tracking, heavy weights for headings, tabular figures for prices */
+h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06em}
 .hero-copy h1{font-weight:900}
-.section-head h2,.menu-body h3,.area-card h3,.booking-left h2{font-weight:700}
-.price-row .yen,.hero-price div b{font-feature-settings:"tnum";letter-spacing:.02em}
+.section-head h2,.booking-left h2{font-weight:900}
+.menu-body h3,.area-card h3{font-weight:700}
+.fv-name,.cta-label,.btn-line,.btn-line-main,.btn-submit,.badge,.tag,.ward,.qual{font-feature-settings:"palt" 1,"kern" 1}
+.price-row .yen,.hero-price div b{font-feature-settings:"tnum" 1;letter-spacing:.02em}
+.reviews-score .big,.summary-box .total,#sumPrice,.dur-price{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums}
 
 /* first view — photo start (reference LP style) */
-.fv{position:relative;width:100%;height:94svh;min-height:560px;max-height:1020px;overflow:hidden;background:#141A17}
+.fv{position:relative;width:100%;height:94vh;height:94svh;min-height:560px;max-height:1020px;overflow:hidden;background:#141A17}
 .fv img{width:100%;height:100%;object-fit:cover;object-position:50% 8%;display:block}
 .fv::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(to top, rgba(10,18,14,.55), rgba(10,18,14,0));pointer-events:none}
 .fv-badge{position:absolute;left:18px;bottom:20px;z-index:2;color:#FFF}
@@ -68,7 +73,7 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 .fv-badge .fv-tag{display:inline-block;background:rgba(255,255,255,.92);color:#18211D;font-size:11px;font-weight:800;letter-spacing:.08em;padding:5px 10px;border-radius:999px;margin-bottom:10px}
 .fv-scroll{position:absolute;right:16px;bottom:20px;z-index:2;color:#FFF;font-size:10px;letter-spacing:.22em;font-weight:700;writing-mode:vertical-rl;opacity:.85}
 @media(max-width:720px){
-.fv{height:96svh;min-height:520px;max-height:none}
+.fv{height:96vh;height:96svh;min-height:520px;max-height:none}
 .fv img{object-position:78% 6%}
 .fv-badge{left:16px;right:16px;bottom:18px}
 .fv-badge .fv-name{font-size:24px}
@@ -102,9 +107,9 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 }
 
 /* header */
-.header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header{position:sticky;top:0;z-index:50;background:var(--bg);background:color-mix(in srgb, var(--bg) 92%, transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .header-inner{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-weight:800;font-size:22px;letter-spacing:.04em;line-height:1}
+.logo{font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-weight:900;font-size:22px;letter-spacing:.05em;line-height:1}
 .logo span{font-size:11px;letter-spacing:.22em;font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-weight:700;color:var(--muted);display:block;margin-top:4px}
 .nav{display:flex;gap:20px;font-size:13px;font-weight:700;letter-spacing:.06em}
 .nav a{opacity:.85}
@@ -153,7 +158,7 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 /* sections */
 .section{max-width:1180px;margin:0 auto;padding:56px 20px 8px}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px;flex-wrap:wrap}
-.section-head h2{font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-size:32px;line-height:1.15;margin:6px 0 6px;letter-spacing:.02em}
+.section-head h2{font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-size:32px;line-height:1.25;margin:6px 0 6px;letter-spacing:.05em}
 .section-head p{margin:0;color:var(--ink2);font-size:14.5px;max-width:560px}
 .label{font-size:11px;letter-spacing:.22em;font-weight:900;color:var(--gold);text-transform:uppercase}
 
@@ -306,7 +311,7 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 .btn-submit{background:#2F6B58;color:#FFF;border:none;padding:14px 18px;border-radius:999px;font-weight:900;font-size:14px;cursor:pointer;flex:1}
 @media(prefers-color-scheme:dark){.btn-submit{background:#A9E7D6;color:#1C312A}}
 .btn-copy{background:transparent;border:1px solid var(--line);padding:13px 16px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer;color:var(--ink)}
-.output{margin-top:14px;background:var(--bg2);border:1px dashed var(--line);border-radius:14px;padding:14px;font-size:13px;line-height:1.75;white-space:pre-wrap;display:none}
+.output{margin-top:14px;background:var(--bg2);border:1px dashed var(--line);border-radius:14px;padding:14px;font-size:13px;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;display:none}
 .output.show{display:block}
 .hint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
 .line-note-flex{display:flex;gap:14px;align-items:flex-start}
@@ -357,6 +362,28 @@ img,svg{max-width:100%}
 .btn-line,.btn-line-main{max-width:100%}
 .fv-badge{max-width:100%}
 .fv-badge .fv-sub{overflow-wrap:anywhere}
+}
+
+/* cross-device hardening — WebKit (iPhone / LINE iOS) & Android WebView:
+   - form controls at 16px stop iOS focus auto-zoom, which pans the page
+     sideways while the visitor is filling in the booking form
+   - date inputs keep their value inside the field on WebKit
+   - the two remaining nowrap pill links may wrap instead of overflowing
+     at 320px or under enlarged system text */
+.field input[type="date"]{min-width:0}
+.field input[type="date"]::-webkit-date-and-time-value{text-align:left;margin:0;min-width:0}
+.field input[type="date"]::-webkit-calendar-picker-indicator{margin-left:4px}
+@media(max-width:860px){
+.field input,.field select,.field textarea{font-size:16px}
+.header-inner{flex-wrap:wrap}
+}
+@media(max-width:720px){
+.reviews-footer a,.care-note a{white-space:normal;text-align:center;max-width:100%;min-width:0}
+.reviews-footer,.care-note{min-width:0}
+.reviews-footer p,.care-note p{min-width:0;overflow-wrap:anywhere}
+.summary-box .row{display:block;min-width:0}
+.summary-box .row b{overflow-wrap:anywhere}
+.booking-left p,.footer p{overflow-wrap:anywhere}
 }
 </style>
 </head>
