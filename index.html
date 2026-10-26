@@ -69,9 +69,10 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 .fv-scroll{position:absolute;right:16px;bottom:20px;z-index:2;color:#FFF;font-size:10px;letter-spacing:.22em;font-weight:700;writing-mode:vertical-rl;opacity:.85}
 @media(max-width:720px){
 .fv{height:96svh;min-height:520px;max-height:none}
-.fv img{object-position:50% 6%}
+.fv img{object-position:78% 6%}
 .fv-badge{left:16px;right:16px;bottom:18px}
 .fv-badge .fv-name{font-size:24px}
+.fv-badge .fv-sub{letter-spacing:.1em}
 .fv-scroll{display:none}
 }
 @media(min-width:861px){
@@ -343,7 +344,14 @@ img,svg{max-width:100%}
 .field{min-width:0}
 .field input,.field select,.field textarea{max-width:100%;min-width:0}
 .summary-box .row>*{min-width:0}
-.header-inner .logo{min-width:0}
+.header-inner{flex-wrap:wrap}
+.header-inner .logo{min-width:0;flex:1 1 auto}
+.header-inner .cta-pill{flex:0 1 auto;min-width:0;white-space:normal;text-align:center}
+.section-head>a{max-width:100%}
+.radio-group,.duration-group,.form-actions{min-width:0}
+.radio-pill{min-width:0}
+.btn-submit{min-width:0}
+.btn-line,.btn-line-main{max-width:100%}
 .fv-badge{max-width:100%}
 .fv-badge .fv-sub{overflow-wrap:anywhere}
 }
