@@ -296,10 +296,15 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 .booking-left{padding:30px 28px 26px}
 .booking-left h2{font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;font-size:30px;line-height:1.2;margin:8px 0 10px;color:#1C312A}
 .booking-left p{font-size:14px;line-height:1.85;color:#335247;margin:0 0 16px}
-.summary-box{background:rgba(255,255,255,.62);border:1px solid rgba(47,107,88,.2);border-radius:16px;padding:16px}
-.summary-box.row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(47,107,88,.14);font-size:13.5px}
-.summary-box.row:last-child{border-bottom:none}
-.summary-box.total{font-size:18px;font-weight:900;color:#1C312A}
+.summary-box{background:rgba(255,255,255,.62);border:1px solid rgba(47,107,88,.2);border-radius:16px;padding:8px 16px 14px}
+.summary-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.summary-table th,.summary-table td{text-align:left;vertical-align:top;padding:10px 0;font-size:13.5px;line-height:1.55}
+.summary-table tr{border-bottom:1px solid rgba(47,107,88,.14)}
+.summary-table tr:last-child{border-bottom:none}
+.summary-table th{width:112px;font-size:12px;font-weight:700;color:#5A7268;letter-spacing:.04em;padding-right:16px;white-space:nowrap}
+.summary-table td{font-weight:800;color:#1C312A;overflow-wrap:anywhere}
+.summary-table .total{font-size:17px;font-weight:900;color:#1C312A}
+.summary-note{margin:10px 0 0;font-size:12px;font-weight:700;color:#335247;line-height:1.6}
 .booking-form{background:#FFFEF9;color:#18211D;padding:26px 24px 22px}
 @media(prefers-color-scheme:dark){.booking-form{background:#F4FBF5;color:#1C312A}}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -819,17 +824,20 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" class="btn-line" style="margin:4px 0 18px;width:100%;text-align:center">今すぐLINEで予約する</a>
 
 <div class="summary-box">
-<div class="row"><span>選択中のメニュー</span><b id="sumMenu">マッサージ</b></div>
-<div class="row"><span>時間</span><b id="sumTime">90分</b></div>
-<div class="row"><span>料金（目安）</span><span class="total" id="sumPrice">¥11,000</span></div>
-<div class="row"><span>交通費</span><b>料金に含まれています（交通費込み）</b></div>
-<div class="row"><span>お支払い方法</span><b>現金またはPayPay</b></div>
-<div class="row"><span>キャンセル</span><b>ご予約時間の1時間前まで受付可能</b></div>
-<div class="row"><span>受付時間</span><b>朝10:00〜夜23:00<span style="display:block;font-size:12px;font-weight:700;margin-top:2px">渋谷区・港区は深夜のご予約も受付可能です</span></b></div>
-<div class="row"><span>対応エリア</span><b>東京23区</b></div>
-<div class="row"><span>出発地</span><b>渋谷</b></div>
-<div class="row"><span>施術者</span><b>鈴田 泰啓</b></div>
-<div class="row"><span>予約の届け先</span><b>予約フォーム（ネット予約）</b></div>
+<table class="summary-table">
+<tr><th scope="row">選択中のメニュー</th><td id="sumMenu">マッサージ</td></tr>
+<tr><th scope="row">時間</th><td id="sumTime">90分</td></tr>
+<tr><th scope="row">料金（目安）</th><td><span class="total" id="sumPrice">¥11,000</span></td></tr>
+<tr><th scope="row">交通費</th><td>料金に含まれています（交通費込み）</td></tr>
+<tr><th scope="row">お支払い方法</th><td>現金またはPayPay</td></tr>
+<tr><th scope="row">キャンセル</th><td>ご予約時間の1時間前まで受付可能</td></tr>
+<tr><th scope="row">受付時間</th><td>朝10:00〜夜23:00</td></tr>
+<tr><th scope="row">対応エリア</th><td>東京23区</td></tr>
+<tr><th scope="row">出発地</th><td>渋谷</td></tr>
+<tr><th scope="row">施術者</th><td>鈴田 泰啓</td></tr>
+<tr><th scope="row">予約の届け先</th><td>予約フォーム（ネット予約）</td></tr>
+</table>
+<p class="summary-note">渋谷区・港区は深夜のご予約も受付可能です</p>
 </div>
 
 <div class="line-card">
