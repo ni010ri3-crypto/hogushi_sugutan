@@ -322,8 +322,10 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt" 1,"kern" 1;letter-spacing:.06e
 @media(prefers-color-scheme:dark){.radio-pill input:checked + label{background:#A9E7D6;color:#1C312A;border-color:#6FBFA3}}
 .duration-group{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .duration-group.radio-pill{min-width:auto}
-.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.btn-copy{background:transparent;border:1px solid var(--line);padding:13px 16px;border-radius:999px;font-weight:800;font-size:14px;cursor:pointer;color:var(--ink)}
+.form-actions{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+.btn-copy{display:block;width:100%;background:var(--surface);border:2px solid var(--green);padding:19px 16px;border-radius:999px;font-weight:800;font-size:17px;line-height:1.45;letter-spacing:.03em;cursor:pointer;color:var(--ink);font-family:inherit;text-align:center;-webkit-tap-highlight-color:transparent}
+.btn-copy-main{background:#2F6B58;border-color:#2F6B58;color:#FFF}
+@media(prefers-color-scheme:dark){.btn-copy-main{background:#A9E7D6;border-color:#A9E7D6;color:#1C312A}}
 .output{margin-top:14px;background:var(--bg2);border:1px dashed var(--line);border-radius:14px;padding:14px;font-size:13px;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;display:none}
 .output.show{display:block}
 .hint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
@@ -793,7 +795,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <div class="flow">
 <div class="flow-step"><div class="num">1</div><h4>メニューを選んで予約フォームへ</h4><p>メニュー・料金でご希望の時間と料金を押して選び、「この内容で予約に進む」から予約フォームへ進みます。公式LINEからもお申し込みいただけます。</p></div>
 <div class="flow-step"><div class="num">2</div><h4>予約フォームに入力</h4><p>予約フォームで希望日時・メニュー・時間・エリアなどを入力します。このページからそのまま送信できます。</p></div>
-<div class="flow-step"><div class="num">3</div><h4>送信して予約リクエスト</h4><p>「予約を送信する」を押して送信してください。内容を確認のうえ、こちらからご連絡します。公式LINEで直接メッセージを送っていただいても大丈夫です。</p></div>
+<div class="flow-step"><div class="num">3</div><h4>送信して予約リクエスト</h4><p>「予約希望文を作成する」を押して文章を作り、コピーして公式LINEにお送りください。内容を確認のうえ、こちらからご連絡します。公式LINEで直接メッセージを送っていただいても大丈夫です。</p></div>
 <div class="flow-step"><div class="num">4</div><h4>当日・訪問と施術</h4><p>施術者が渋谷から出発し、ご指定の場所へ伺います。施術前に気になる部位や強さを確認してから施術します。</p></div>
 </div>
 <div style="margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--ink2);line-height:1.75;display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="font-size:18px" aria-hidden="true">💴</span><p style="margin:0"><strong style="color:var(--ink)">お支払い方法：</strong>お支払い方法は現金またはPayPayでお願いいたします。</p></div>
@@ -848,7 +850,7 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <div style="margin-bottom:16px">
 <div style="font-size:11px;letter-spacing:.18em;font-weight:900;color:#0A8A3C">ONLINE BOOKING — ネット予約</div>
 <h3 style="margin:4px 0 6px;font-size:19px;line-height:1.35">ご予約フォーム（ネット予約）</h3>
-<p style="margin:0;font-size:13.5px;line-height:1.7;color:var(--ink2)">必要事項を入力して「予約を送信する」を押すと、予約リクエストがそのまま送信されます（24時間受付）。送信後、内容を確認のうえこちらからご連絡します。公式LINEに貼り付ける予約希望文を作ることもできます。</p>
+<p style="margin:0;font-size:13.5px;line-height:1.7;color:var(--ink2)">必要事項を入力して「予約希望文を作成する」を押すと、公式LINEに送る文章が作れます（24時間受付）。作成した文章をコピーして公式LINEでお送りください。内容を確認のうえこちらからご連絡します。</p>
 </div>
 <div class="form-sel-box">
 <div class="form-sel-head"><span>選択中のメニュー</span><a href="#menu" class="form-sel-change">変更する</a></div>
@@ -918,11 +920,11 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <p class="policy-text">キャンセルポリシー：キャンセルはご予約時間の1時間前まで受付可能です。表示料金は交通費込みです（別途交通費はかかりません）。</p>
 </div>
 <div class="form-actions">
-<button type="button" class="btn-copy" id="makeTextBtn">予約希望文を作成する（LINE用）</button>
-<button type="button" class="btn-copy" id="copyBtn">文をコピー</button>
+<button type="button" class="btn-copy btn-copy-main" id="makeTextBtn">① 予約希望文を作成する（LINE用）</button>
+<button type="button" class="btn-copy" id="copyBtn">② 文をコピー</button>
 </div>
 <div class="output" id="output"></div>
-<p class="hint" id="copyHint">「予約を送信する」を押すと、入力内容がそのまま送信されます。「予約希望文を作成する」を押すと、公式LINEに貼り付ける文章も作れます。コピーしたら、上の「今すぐLINEで予約する」ボタンから公式LINEを開いて貼り付けてお送りください。</p>
+<p class="hint" id="copyHint">「予約希望文を作成する」を押すと、公式LINEに送る文章が作れます。作成した文章をコピーして、上の「今すぐLINEで予約する」ボタンから公式LINEを開いて貼り付けてお送りください。</p>
 <div class="line-note">
 <div class="line-note-flex">
 <div>
@@ -1069,7 +1071,7 @@ try{
 await navigator.clipboard.writeText(lastText);
 document.getElementById('copyHint').textContent='コピーしました。「今すぐLINEで予約する」ボタンから公式LINEを開いて、トークに貼り付けてお送りください。';
 document.getElementById('copyBtn').textContent='コピーしました ✓';
-setTimeout(()=>document.getElementById('copyBtn').textContent='文をコピー',1800);
+setTimeout(()=>document.getElementById('copyBtn').textContent='② 文をコピー',1800);
 }catch(e){
 document.getElementById('copyHint').textContent='コピーできませんでした。表示された文章を長押し／選択してコピーし、公式LINEからお送りください。';
 }
