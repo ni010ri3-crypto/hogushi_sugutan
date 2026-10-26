@@ -295,8 +295,8 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 .field textarea{resize:vertical;min-height:76px}
 .field.full{grid-column:1/-1}
 .radio-group{display:flex;gap:8px;flex-wrap:wrap}
-.radio-pill{flex:1;min-width:120px}
-.radio-pill input{position:absolute;opacity:0;pointer-events:none}
+.radio-pill{flex:1;min-width:120px;position:relative}
+.radio-pill input[type="radio"]{position:absolute;top:0;left:0;width:1px;height:1px;margin:0;padding:0;border:0;opacity:0;pointer-events:none}
 .radio-pill label{display:block;text-align:center;border:1px solid var(--line);border-radius:12px;padding:11px 8px;font-size:13.5px;font-weight:800;cursor:pointer;background:var(--surface)}
 .radio-pill input:checked + label{background:#A9E7D6;color:#1C312A;border-color:#6FBFA3}
 @media(prefers-color-scheme:dark){.radio-pill input:checked + label{background:#A9E7D6;color:#1C312A;border-color:#6FBFA3}}
@@ -331,6 +331,9 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 .footer{max-width:1180px;margin:40px auto 0;padding:24px 20px 36px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .footer p{margin:0;font-size:13px;color:var(--muted);line-height:1.7}
 
+/* page wrapper — final guard against horizontal scroll / sway (iOS Safari) */
+.page-wrap{overflow-x:hidden;overflow-x:clip;max-width:100%;width:100%}
+
 /* mobile overflow fix — no horizontal scroll / sway at phone widths */
 img,svg{max-width:100%}
 @media(max-width:560px){
@@ -358,6 +361,7 @@ img,svg{max-width:100%}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <!-- FIRST VIEW : photo start -->
 <section class="fv" aria-label="ほぐしすぐたん ファーストビュー">
@@ -974,5 +978,6 @@ document.getElementById('copyHint').textContent='コピーできませんでし�
 }
 });
 </script>
+</div>
 </body>
 </html>
