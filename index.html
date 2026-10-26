@@ -46,8 +46,8 @@
 }
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(165deg,#DFF3D8 0%,#BFEAD9 32%,#A9E7D6 62%,#BEE9E7 100%);background-attachment:fixed;color:var(--ink);font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;line-height:1.8;letter-spacing:.03em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip;max-width:100%}
+body{margin:0;overflow-x:hidden;overflow-x:clip;max-width:100%;width:100%;background:linear-gradient(165deg,#DFF3D8 0%,#BFEAD9 32%,#A9E7D6 62%,#BEE9E7 100%);background-attachment:fixed;color:var(--ink);font-family:"Zen Kaku Gothic New","Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;line-height:1.8;letter-spacing:.03em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 @media (prefers-color-scheme: dark){body{background:linear-gradient(165deg,#24473C 0%,#1E3D36 55%,#1B383F 100%);background-attachment:fixed}}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -329,6 +329,24 @@ h1,h2,h3,.logo,.name{font-feature-settings:"palt";letter-spacing:.05em}
 /* footer */
 .footer{max-width:1180px;margin:40px auto 0;padding:24px 20px 36px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .footer p{margin:0;font-size:13px;color:var(--muted);line-height:1.7}
+
+/* mobile overflow fix — no horizontal scroll / sway at phone widths */
+img,svg{max-width:100%}
+@media(max-width:560px){
+.hero,.section,.strip,.footer,.header-inner,.cta-pills,.fv{max-width:100%}
+.strip-inner,.menu-grid,.care-grid,.care-sub,.therapist-wrap,.mini-grid,.reviews-grid,.area-layout,.booking-wrap,.form-grid,.flow,.gallery{grid-template-columns:1fr}
+.strip-inner>*,.menu-grid>*,.care-grid>*,.care-sub>*,.therapist-wrap>*,.mini-grid>*,.reviews-grid>*,.area-layout>*,.booking-wrap>*,.form-grid>*,.flow>*,.gallery>*{min-width:0}
+.hero-price{flex-direction:column;gap:12px}
+.hero-price div{min-width:0}
+.hero-price div b{font-size:20px;overflow-wrap:anywhere}
+.price-row{flex-wrap:wrap;gap:2px 10px}
+.field{min-width:0}
+.field input,.field select,.field textarea{max-width:100%;min-width:0}
+.summary-box .row>*{min-width:0}
+.header-inner .logo{min-width:0}
+.fv-badge{max-width:100%}
+.fv-badge .fv-sub{overflow-wrap:anywhere}
+}
 </style>
 </head>
 <body>
