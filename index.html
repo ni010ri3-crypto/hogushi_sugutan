@@ -448,6 +448,21 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 .fixed-line-bar a{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:760px;margin:0 auto;background:#06C755;color:#FFF!important;font-weight:900;font-size:17px;letter-spacing:.04em;line-height:1.25;padding:15px 16px;border-radius:999px;text-align:center;box-shadow:0 8px 22px rgba(6,199,85,.35);font-feature-settings:"palt" 1,"kern" 1}
 .fixed-line-bar a:hover{background:#05B34C}
 @media(max-width:560px){.fixed-line-bar a{font-size:16px;padding:14px 12px}}
+
+/* selected-menu floating bar — appears directly above the fixed LINE bar
+   the moment a menu price is chosen, so the visitor can go to the booking
+   form without scrolling. Hidden until something is selected, and hidden
+   again while the booking form is on screen so it never covers the form's
+   own buttons. Its bottom offset and the body's extra bottom padding are
+   set from JS (measured from the real bar heights). */
+.menu-float-bar{display:none;position:fixed;left:0;right:0;bottom:72px;z-index:89;padding:10px 12px;background:rgba(255,255,255,.96);background:color-mix(in srgb,#FFFFFF 94%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1.5px solid rgba(47,107,88,.45);box-shadow:0 -6px 24px rgba(24,33,29,.16)}
+.menu-float-bar.show{display:block}
+@media(prefers-color-scheme:dark){.menu-float-bar{background:rgba(20,32,26,.96);background:color-mix(in srgb,#14201A 94%,transparent)}}
+.menu-float-inner{max-width:760px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.menu-float-text{margin:0;flex:1;min-width:0;font-size:14px;font-weight:800;line-height:1.45;overflow-wrap:anywhere;font-feature-settings:"palt" 1,"kern" 1}
+.menu-float-btn{flex-shrink:0;background:#2F6B58;color:#FFF;border:none;padding:13px 18px;border-radius:999px;font-weight:900;font-size:14.5px;cursor:pointer;white-space:nowrap;font-family:inherit;letter-spacing:.03em;box-shadow:0 6px 18px rgba(47,107,88,.3)}
+@media(prefers-color-scheme:dark){.menu-float-btn{background:#A9E7D6;color:#1C312A}}
+@media(max-width:560px){.menu-float-text{font-size:13px}.menu-float-btn{font-size:13.5px;padding:12px 13px}}
 </style>
 </head>
 <body>
@@ -981,6 +996,14 @@ body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 <p>ほぐし（マッサージ）60分 ¥8,000 ・ 90分 ¥11,000 ・ 120分 ¥14,000<br>オイルマッサージ 60分 ¥9,000 ・ 90分 ¥12,000 ・ 120分 ¥15,000<br>表示料金は交通費込みです ／ キャンセルはご予約時間の1時間前まで受付可能です<br>受付時間は朝10:00〜夜23:00まで（終電の都合により、受付終了が早まる場合があります）<br>渋谷区・港区は深夜のご予約も受付可能です<br><a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener" style="color:#0A8A3C;font-weight:900">ご予約は公式LINEから →</a></p>
 </footer>
 
+<!-- SELECTED MENU FLOATING BAR — shown above the LINE bar once a menu is chosen -->
+<div class="menu-float-bar" id="menuFloatBar" aria-hidden="true">
+<div class="menu-float-inner">
+<p class="menu-float-text" id="menuFloatText" aria-live="polite"></p>
+<button type="button" class="menu-float-btn" id="menuFloatBtn">この内容で予約に進む</button>
+</div>
+</div>
+
 <!-- FIXED BOTTOM LINE BOOKING BAR -->
 <div class="fixed-line-bar">
 <a href="https://lin.ee/QRAL5dJ" target="_blank" rel="noopener">今すぐLINEで予約する</a>
@@ -1158,6 +1181,7 @@ if(m&&d&&typeof priceMap!=='undefined'&&priceMap[m.value]){
 formSelMenu.textContent=m.value;
 formSelDetail.textContent=d.value+'分 ・ '+yen(priceMap[m.value][d.value])+'（税込・交通費込み）';
 }
+updateFloat();
 }
 function choose(menu,dur,price,fromForm){
 selected={menu:menu,dur:dur,price:price};
@@ -1188,6 +1212,42 @@ goBtn.addEventListener('click',function(){
 if(!selected)return;
 document.getElementById('booking').scrollIntoView({behavior:'smooth'});
 });
+
+/* フローティングバー — メニューを選んだ瞬間にLINE固定バーのすぐ上へ表示。
+   未選択のときは出さず、予約フォーム（#booking）が画面内にある間は
+   フォームのボタンを隠さないよう隠す。表示中はページ末尾の余白を
+   バーの高さ分だけ増やし、内容がバーの下に隠れないようにする。 */
+var floatBar=document.getElementById('menuFloatBar');
+var floatText=document.getElementById('menuFloatText');
+var floatBtn=document.getElementById('menuFloatBtn');
+var lineBar=document.querySelector('.fixed-line-bar');
+var bookingVisible=false;
+function layoutFloat(){
+if(lineBar)floatBar.style.bottom=lineBar.offsetHeight+'px';
+if(floatBar.classList.contains('show')){
+document.body.style.paddingBottom='calc('+(84+floatBar.offsetHeight)+'px + env(safe-area-inset-bottom,0px))';
+}else{
+document.body.style.paddingBottom='';
+}
+}
+function updateFloat(){
+if(selected)floatText.textContent='選択中：'+selected.menu+' '+selected.dur+'分 '+yen(selected.price);
+var show=!!selected&&!bookingVisible;
+floatBar.classList.toggle('show',show);
+floatBar.setAttribute('aria-hidden',show?'false':'true');
+layoutFloat();
+}
+floatBtn.addEventListener('click',function(){
+if(!selected)return;
+document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+});
+if('IntersectionObserver' in window){
+new IntersectionObserver(function(entries){
+bookingVisible=entries[0].isIntersecting;
+updateFloat();
+},{threshold:0}).observe(document.getElementById('booking'));
+}
+window.addEventListener('resize',layoutFloat);
 reflect();
 
 /* キャンセルポリシー同意チェック — チェックが入るまで送信ボタンを押せない */
